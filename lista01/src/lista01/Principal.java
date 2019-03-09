@@ -17,12 +17,11 @@ public class Principal {
 		
 		int menu = menu2();
 		
-		while (menu < 8) {
+		while (menu > -1) {
 			
 			swtch(menu);
 			
 			menu = menu2();
-			
 		}
 	}
 	

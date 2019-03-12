@@ -8,7 +8,6 @@ public class Exercicios {
 	
 	/**
 	 * Ex01 . Função que calcula o enésimo termo da PA.
-	 * 
 	 * @param a1 - Primeiro termo.
 	 * @param n - Índice do enésimo termo.
 	 * @param r - razão da PA.

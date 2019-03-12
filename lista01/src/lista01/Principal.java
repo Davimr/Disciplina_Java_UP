@@ -5,7 +5,6 @@ package lista01;
  *@author DaviMR
  *@version 1.0
  *@since 28/02/2019
- *
  */
 public class Principal {
 	

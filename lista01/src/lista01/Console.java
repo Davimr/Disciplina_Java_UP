@@ -3,8 +3,7 @@ package lista01;
 import java.util.Scanner;
 
 /**
- * Classe especï¿½fica para realizar operaï¿½ï¿½es de entrada e saï¿½da de dados no
- * Console.
+ * Classe específica para realizar operações de entrada e saída de dados no console.
  * 
  * @author Andre Pimenta
  * 

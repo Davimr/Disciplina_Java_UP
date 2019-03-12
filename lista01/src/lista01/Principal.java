@@ -26,6 +26,58 @@ public class Principal {
 	}
 	
 	/**
+	 * Faz a execução da tela com as opções ao usuário e devolve a escolha.
+	 * @return - Opção selecionada pelo usuário.
+	 */
+	public static int menu2() {
+		
+		String[] opcoes = { "Cálculo do enésimo termo da PA.", "Cálculo da média Aritmetica.", 
+				"Cálculo da média ponderada.", "Cálculo de conversão de celsius para fahrenheint.",
+				"Cálculo de volume do cilindro.", "Cálculo de gasto de combustivel.",
+				"Cálculo do valor final a ser pago por uma compra." };
+		
+		String titulo = "Selecione a opção desejada:";
+		
+		String descricao = null;
+		
+		int menu = Console.mostrarMenu(opcoes, titulo, descricao);
+		
+		return menu;
+		
+	}
+	
+	/**
+	 * Chama as funções de acordo com a seleção do usuário.
+	 * @param menu - Opção selecionada pelo usuário.
+	 */
+	public static void swtch(int menu) {
+		
+		switch (menu) {
+		case 1:
+			calcularEnesimoTermoPA();
+			break;
+		case 2:
+			calcularMediaAritmetica();
+			break;
+		case 3:
+			calcularMediaPonderada();
+			break;
+		case 4:
+			converterCelsiusParaFahrenheint();
+			break;
+		case 5:
+			calcularVolumeCilindro();
+			break;
+		case 6:
+			calcularCombustivel();
+			break;
+		case 7:
+			calcularValorPago();
+			break;
+		}
+	}
+	
+	/**
 	 * Faz a execução de tela do cálculo do enésimo termo da PA.
 	 */
 	public static void calcularEnesimoTermoPA() {
@@ -140,50 +192,6 @@ public class Principal {
 		
 		//Printa na tela
 		System.out.printf("O valor final a ser pago é = %.2f\n\n", valorFinal);
-	}
-	
-	public static int menu2() {
-		
-		String[] opcoes = { "Cálculo do enésimo termo da PA.", "Cálculo da média Aritmetica.", 
-				"Cálculo da média ponderada.", "Cálculo de conversão de celsius para fahrenheint.",
-				"Cálculo de volume do cilindro.", "Cálculo de gasto de combustivel.",
-				"Cálculo do valor final a ser pago por uma compra." };
-		
-		String titulo = "Selecione a opção desejada:";
-		
-		String descricao = null;
-		
-		int menu = Console.mostrarMenu(opcoes, titulo, descricao);
-		
-		return menu;
-		
-	}
-	
-	public static void swtch(int menu) {
-		
-		switch (menu) {
-		case 1:
-			calcularEnesimoTermoPA();
-			break;
-		case 2:
-			calcularMediaAritmetica();
-			break;
-		case 3:
-			calcularMediaPonderada();
-			break;
-		case 4:
-			converterCelsiusParaFahrenheint();
-			break;
-		case 5:
-			calcularVolumeCilindro();
-			break;
-		case 6:
-			calcularCombustivel();
-			break;
-		case 7:
-			calcularValorPago();
-			break;
-		}
 	}
 }
 

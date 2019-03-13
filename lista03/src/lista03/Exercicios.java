@@ -24,7 +24,7 @@ public class Exercicios {
 	/**
 	 * Segundo fator fixo para utilização no cálculo de peso ideal para mulheres.
 	 */
-	public static final double FATOR_FEMININO_2 = 4.7d;
+	public static final double FATOR_FEMININO_2 = 44.7d;
 	
 	
 	/**

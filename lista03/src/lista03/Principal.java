@@ -30,7 +30,7 @@ public class Principal {
 	 */
 	public static int menu2() {
 
-		String[] opcoes = { "" };
+		String[] opcoes = { "Cálculo do peso ideal." };
 
 		String titulo = "Selecione a opção desejada:";
 
@@ -50,7 +50,7 @@ public class Principal {
 
 		switch (menu) {
 		case 1:
-			
+			pesoIdeal();
 			break;
 		case 2:
 			
@@ -86,6 +86,6 @@ public class Principal {
 		double pesoIdeal = Exercicios.pesoIdeal(sexo, h);
 		
 		//Printa na tela
-		System.out.println("O peso ideal é " + pesoIdeal + "\n");
+		System.out.printf("O peso ideal é %.2f \n", pesoIdeal);
 	}
 }

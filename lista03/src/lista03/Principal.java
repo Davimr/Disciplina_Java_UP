@@ -88,4 +88,20 @@ public class Principal {
 		//Printa na tela
 		System.out.printf("O peso ideal é %.2f \n", pesoIdeal);
 	}
+	
+	/**
+	 * Faz a execução de tela para cálculo do preço final de um produto.
+	 */
+	public static void valorFinalPago () {
+		
+		//Pega as variaveis do teclado
+		double precoInicial = Console.recuperaDecimal("Digite o valor inicial do produto em reais ");
+		int metodoPagamento = Console.recuperaInteiro("Digite o método de pagamento 1 2 3 ou 4 ");
+		
+		//Executa o cálculo
+		double precoFinal = Exercicios.valorFinalPago(precoInicial, metodoPagamento);
+		
+		//Printa na tela
+		System.out.println("O valor final do produto é " + precoFinal);
+	}
 }

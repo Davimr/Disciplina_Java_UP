@@ -26,6 +26,20 @@ public class Exercicios {
 	 */
 	public static final double FATOR_FEMININO_2 = 44.7d;
 	
+	/**
+	 * Porcentagem aplicada em desconto no preço inicial do produto pago a vista em dinheiro ou cheque.
+	 */
+	public static final double PAGAMENTO_A_VISTA_DINHEIRO = 0.10d;
+	
+	/**
+	 * Porcentagem aplicada em desconto no preço inicial do produto pago a vista no cartão de crédito.
+	 */
+	public static final double PAGAMENTO_A_VISTA_CREDITO = 0.05d;
+	
+	/**
+	 * Porcentagem aplicada em acrescimo no preço incial do produto pago a prazo em 3 vezes.
+	 */
+	public static final double PAGAMENTO_A_PRAZO_3X = 0.10;
 	
 	/**
 	 * Ex01 . Calcula o peso ideal do usuário baseado no sexo e na altura.
@@ -48,5 +62,33 @@ public class Exercicios {
 		}
 		
 		return pesoIdeal;
+	}
+	
+	/**
+	 * Ex03 . Calcula o valor final de um produto de acordo com a escolha do método de pagamento.
+	 * @param precoInicial - Preço inicial do produto em Reais.
+	 * @param metodoPagamento - Método de pagamento escolhido pelo usuário.
+	 * @return - Valor final do produto.
+	 */
+	public static double valorFinalPago (double precoInicial, int metodoPagamento) {
+		
+		double precoFinal = 0;
+		
+		switch (metodoPagamento) {
+		case 1:
+			precoFinal = precoInicial - (precoInicial * PAGAMENTO_A_VISTA_DINHEIRO);
+			break;
+		case 2:
+			precoFinal = precoInicial - (precoInicial * PAGAMENTO_A_VISTA_CREDITO);
+			break;
+		case 3:
+			precoFinal = precoInicial;
+			break;
+		case 4:
+			precoFinal = precoInicial + (precoInicial * PAGAMENTO_A_PRAZO_3X);
+			break;
+		}
+		
+		return precoFinal;
 	}
 }

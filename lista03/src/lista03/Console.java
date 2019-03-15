@@ -124,9 +124,11 @@ public class Console {
 		return valor;
 	}
 	
-	public static double distanciaEntre2Pontos (int x1, int x2, int y1, int y2) {
+	public static double distanciaEntre2Pontos (int x1, int y1, int x2, int y2) {
 		
-		double distancia = Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow(y2 - y1, 2));
+		double distancia = Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2);
+		
+		distancia = Math.sqrt(distancia);
 		
 		return distancia;
 	}

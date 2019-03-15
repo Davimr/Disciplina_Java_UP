@@ -150,13 +150,13 @@ public class Principal {
 	public static void testeTriangulo () {
 		
 		int x1 = Console.recuperaInteiro("Digite o lado 1 do primeiro ponto ");
-		int x2 = Console.recuperaInteiro("Digite o lado 2 do primeiro ponto ");
-		int y1 = Console.recuperaInteiro("Digite o lado 1 do segundo ponto ");
+		int y1 = Console.recuperaInteiro("Digite o lado 2 do primeiro ponto ");
+		int x2 = Console.recuperaInteiro("Digite o lado 1 do segundo ponto ");
 		int y2 = Console.recuperaInteiro("Digite o lado 2 do segundo ponto ");
-		int z1 = Console.recuperaInteiro("Digite o lado 1 do terceiro ponto ");
-		int z2 = Console.recuperaInteiro("Digite o lado 1 do terceiro ponto ");
+		int x3 = Console.recuperaInteiro("Digite o lado 1 do terceiro ponto ");
+		int y3 = Console.recuperaInteiro("Digite o lado 2 do terceiro ponto ");
 		
-		String tipo_triangulo = Exercicios.testeTriangulo(x1, x2, y1, y2, z1, z2);
+		String tipo_triangulo = Exercicios.testeTriangulo(x1, y1, x2, y2, x3, y3);
 		
 		System.out.println(tipo_triangulo);
 		

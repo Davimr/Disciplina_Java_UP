@@ -162,13 +162,13 @@ public class Exercicios {
 	 * @param z2 - Terceiro ponto lado 2.
 	 * @return - Retorna se os pontos indicados formam um triângulo e o seu tipo.
 	 */
-	public static String testeTriangulo (int x1, int x2, int y1, int y2, int z1, int z2) {
+	public static String testeTriangulo (int x1, int y1, int x2, int y2, int x3, int y3) {
 		
-		double lado1Lado2 = Console.distanciaEntre2Pontos(x1, x2, y1, y2);
+		double lado1Lado2 = Console.distanciaEntre2Pontos(x1, y1, x2, y2);
 		
-		double lado1Lado3 = Console.distanciaEntre2Pontos(x1, x2, z1, z2);
+		double lado1Lado3 = Console.distanciaEntre2Pontos(x1, y1, x3, y3);
 		
-		double lado2Lado3 = Console.distanciaEntre2Pontos(y1, y2, z1, z2);
+		double lado2Lado3 = Console.distanciaEntre2Pontos(x2, y2, x3, y3);
 		
 		String tipo_triangulo;
 		
@@ -214,11 +214,10 @@ public class Exercicios {
 			tipo_triangulo = "Triângulo isóceles.";
 			return tipo_triangulo;
 		} 
-		else {
-			
-			tipo_triangulo = "Não formam triângulo";
-			return tipo_triangulo;
-		}
+		
+		tipo_triangulo = "Não formam triângulo.";
+		return tipo_triangulo;
+		
 	}
 	
 	/**

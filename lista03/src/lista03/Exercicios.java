@@ -153,7 +153,76 @@ public class Exercicios {
 	}
 	
 	/**
-	 * Ex05 . Faz o cálculo do fatorial de um número inteiro selecionado pelo usuário.
+	 * Ex05 . Testa três pontos do plano cartesiano e indica se os mesmos formam um triângulo.
+	 * @param x1 - Primeiro ponto lado 1.
+	 * @param x2 - Primeiro ponto lado 2.
+	 * @param y1 - Segundo ponto lado 1.
+	 * @param y2 - Segundo ponto lado 2.
+	 * @param z1 - Terceiro ponto lado 1.
+	 * @param z2 - Terceiro ponto lado 2.
+	 * @return - Retorna se os pontos indicados formam um triângulo e o seu tipo.
+	 */
+	public static String testeTriangulo (int x1, int x2, int y1, int y2, int z1, int z2) {
+		
+		double lado1Lado2 = Console.distanciaEntre2Pontos(x1, x2, y1, y2);
+		
+		double lado1Lado3 = Console.distanciaEntre2Pontos(x1, x2, z1, z2);
+		
+		double lado2Lado3 = Console.distanciaEntre2Pontos(y1, y2, z1, z2);
+		
+		String tipo_triangulo;
+		
+		boolean teste = false;
+		
+		if (lado1Lado2 < (lado1Lado3 + lado2Lado3)) {
+			
+			if (lado1Lado3 < (lado1Lado2 + lado2Lado3)) {
+				
+				if (lado2Lado3 < (lado1Lado2 + lado1Lado3)) {
+					
+					teste = true;
+				}
+			}
+		}
+		
+		if (teste == true) {
+		
+			if (lado1Lado2 != lado2Lado3) {
+				
+				if (lado1Lado2 != lado1Lado3) {
+					
+					if (lado1Lado3 != lado2Lado3) {
+						
+						tipo_triangulo = "Triângulo escaleno.";
+						return tipo_triangulo;
+					}	
+				}
+			}
+			
+			if (lado1Lado2 == lado2Lado3) {
+				
+				if (lado1Lado2 == lado1Lado3) {
+					
+					if (lado1Lado3 == lado2Lado3) {
+						
+						tipo_triangulo = "Triângulo eqüilátero.";
+						return tipo_triangulo;
+					}
+				}
+			}
+			
+			tipo_triangulo = "Triângulo isóceles.";
+			return tipo_triangulo;
+		} 
+		else {
+			
+			tipo_triangulo = "Não formam triângulo";
+			return tipo_triangulo;
+		}
+	}
+	
+	/**
+	 * Ex06 . Faz o cálculo do fatorial de um número inteiro selecionado pelo usuário.
 	 * @param numeroEscolhido - Número inteiro escolhido pelo usuário.
 	 * @return - Fatorial do número selecionado pelo usuário.
 	 */
@@ -189,5 +258,8 @@ public class Exercicios {
 			}
 		}
 	}
+	
+
+
 	
 }

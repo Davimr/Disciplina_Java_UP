@@ -30,7 +30,7 @@ public class Principal {
 	 */
 	public static int menu2() {
 
-		String[] opcoes = { "Cálculo do peso ideal.", "Cálculo do valor final a ser pago.", "Cálculo entre dois números.", "Cálculo de equação do segundo grau." };
+		String[] opcoes = { "Cálculo do peso ideal.", "Cálculo do valor final a ser pago.", "Cálculo entre dois números.", "Cálculo de equação do segundo grau.", "Teste do tipo de triângulo" };
 
 		String titulo = "Selecione a opção desejada:";
 
@@ -62,7 +62,7 @@ public class Principal {
 			calculadora();
 			break;
 		case 5:
-			
+			testeTriangulo();
 			break;
 		case 6:
 			
@@ -145,6 +145,21 @@ public class Principal {
 		double resposta = Exercicios.calculadora(primeiroNum, segundoNum, operacao);
 		
 		System.out.println("O resultado do cálculo é " + resposta);
+	}
+	
+	public static void testeTriangulo () {
+		
+		int x1 = Console.recuperaInteiro("Digite o lado 1 do primeiro ponto ");
+		int x2 = Console.recuperaInteiro("Digite o lado 2 do primeiro ponto ");
+		int y1 = Console.recuperaInteiro("Digite o lado 1 do segundo ponto ");
+		int y2 = Console.recuperaInteiro("Digite o lado 2 do segundo ponto ");
+		int z1 = Console.recuperaInteiro("Digite o lado 1 do terceiro ponto ");
+		int z2 = Console.recuperaInteiro("Digite o lado 1 do terceiro ponto ");
+		
+		String tipo_triangulo = Exercicios.testeTriangulo(x1, x2, y1, y2, z1, z2);
+		
+		System.out.println(tipo_triangulo);
+		
 	}
 	
 	/**

@@ -65,6 +65,37 @@ public class Exercicios {
 	}
 	
 	/**
+	 * Ex02 . Faz o cálculo de Báskara para a equação do segundo grau.
+	 * @param a - Termo em X ao quadrado.
+	 * @param b - Termo em X.
+	 * @param c - Termo em x elevado a zero.
+	 * @return - Resultado do cálculo dentro de um vetor.
+	 */
+	public static double[] calculoEquacao2Grau (double a, double b, double c) {
+		
+		double delta = Math.pow(b, 2) - 4 * a * c;
+		
+		if (delta < 0) {
+			
+			double[] vazio = {};
+			return vazio;
+		}
+		
+		if (delta == 0) {
+			
+			double raiz = -b / 2 * a;
+			
+			double[] umaRaiz = {raiz};
+			return umaRaiz;
+		}
+		
+		double raiz1 = (-b + Math.sqrt(delta)) / 2 * a;
+		double raiz2 = (-b - Math.sqrt(delta)) / 2 * a;
+		double[] raizes = {raiz1, raiz2};
+		return raizes;
+	}
+	
+	/**
 	 * Ex03 . Calcula o valor final de um produto de acordo com a escolha do método de pagamento.
 	 * @param precoInicial - Preço inicial do produto em Reais.
 	 * @param metodoPagamento - Método de pagamento escolhido pelo usuário.
@@ -72,7 +103,7 @@ public class Exercicios {
 	 */
 	public static double valorFinalPago (double precoInicial, int metodoPagamento) {
 		
-		double precoFinal = 0;
+		double precoFinal = 0d;
 		
 		switch (metodoPagamento) {
 		case 1:
@@ -91,4 +122,72 @@ public class Exercicios {
 		
 		return precoFinal;
 	}
+	
+	/**
+	 * Ex04 . Faz o cálculo entre dois numero informados pelo usuário de acordo com a operação desejada.
+	 * @param primeiroNum - Primeiro número informado pelo usuário.
+	 * @param segundoNum - Segundo número informado pelo usuário.
+	 * @param operacao - Operação desejada para o cálculo enviada através de um inteiro de 1 a 4.
+	 * @return - Resultado do cálculo.
+	 */
+	public static double calculadora(double primeiroNum, double segundoNum, int operacao) {
+		
+		double resposta = 0d;
+		
+		switch (operacao) {
+		case 1:
+			resposta = primeiroNum + segundoNum;
+			break;
+		case 2:
+			resposta = primeiroNum - segundoNum;
+			break;
+		case 3:
+			resposta = primeiroNum * segundoNum;
+			break;
+		case 4:
+			resposta = primeiroNum / segundoNum;
+			break;
+		}
+		
+		return resposta;
+	}
+	
+	/**
+	 * Ex05 . Faz o cálculo do fatorial de um número inteiro selecionado pelo usuário.
+	 * @param numeroEscolhido - Número inteiro escolhido pelo usuário.
+	 * @return - Fatorial do número selecionado pelo usuário.
+	 */
+	public static int fatorial (int numeroEscolhido) {
+		
+		int result = 0;
+		
+		int i = 0;
+		
+		for (i = 0; i <= numeroEscolhido; i++) {
+			
+			result = i * i+1;
+		}
+		
+		return result;
+	}
+	
+	/**
+	 * Ex11 . Apresenta os números em sequência de acordo com o número desejado pelo usuário.
+	 * @param numeroo - Número inteiro escolhido pelo usuário.
+	 */
+	public static void sequencia1 (int numeroo) {
+		
+		int i = 0;
+		
+		int x = 0;
+		
+		for (i = 1; i <= numeroo; i++) {
+			
+			for (x = 0; x < i; x++) {
+				
+				System.out.printf("%d ", i);
+			}
+		}
+	}
+	
 }

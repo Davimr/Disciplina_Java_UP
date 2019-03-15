@@ -30,7 +30,7 @@ public class Principal {
 	 */
 	public static int menu2() {
 
-		String[] opcoes = { "Cálculo do peso ideal." };
+		String[] opcoes = { "Cálculo do peso ideal.", "Cálculo do valor final a ser pago.", "Cálculo entre dois números.", "Cálculo de equação do segundo grau." };
 
 		String titulo = "Selecione a opção desejada:";
 
@@ -53,13 +53,13 @@ public class Principal {
 			pesoIdeal();
 			break;
 		case 2:
-			
+			equacao2Grau();
 			break;
 		case 3:
-			
+			valorFinalPago();
 			break;
 		case 4:
-			
+			calculadora();
 			break;
 		case 5:
 			
@@ -68,7 +68,7 @@ public class Principal {
 			
 			break;
 		case 7:
-			
+			sequencia1();
 			break;
 		}
 	}
@@ -90,6 +90,34 @@ public class Principal {
 	}
 	
 	/**
+	 * Faz a execução de tela para cálcular a equação do segundo grau.
+	 */
+	public static void equacao2Grau () {
+		
+		double a = Console.recuperaDecimal("Digite o valor de a ");
+		double b = Console.recuperaDecimal("Digite o valor de b ");
+		double c = Console.recuperaDecimal("Digite o valor de c ");
+		
+		double[] raizes = Exercicios.calculoEquacao2Grau(a, b, c);
+		
+		if (raizes.length == 0) {
+			
+			System.out.println("Não existem raízes reais.");
+		}
+		
+		if (raizes.length == 1) {
+			
+			System.out.println("Existe uma raiz real: " + raizes[0]);
+		}
+		
+		if (raizes.length == 2) {
+			
+			System.out.println("Raiz 1: " + raizes [0]);
+			System.out.println(" Raiz 2: " + raizes[1]);
+		}
+	}
+	
+	/**
 	 * Faz a execução de tela para cálculo do preço final de um produto.
 	 */
 	public static void valorFinalPago () {
@@ -103,5 +131,43 @@ public class Principal {
 		
 		//Printa na tela
 		System.out.println("O valor final do produto é " + precoFinal);
+	}
+	
+	/**
+	 * Faz a execução de tela para cálculo entre dois números dados pelo usuário de acordo com a opção escolhida.
+	 */
+	public static void calculadora () {
+		
+		double primeiroNum = Console.recuperaDecimal("Digite o primeiro número para o cálculo ");
+		double segundoNum = Console.recuperaDecimal("Digite o segundo número para o cálculo ");
+		int operacao = Console.recuperaInteiro("Digite a operação desejada 1 a 4 ");
+		
+		double resposta = Exercicios.calculadora(primeiroNum, segundoNum, operacao);
+		
+		System.out.println("O resultado do cálculo é " + resposta);
+	}
+	
+	/**
+	 * Faz a execução de tela para o cálculo do fatorial de um número escolhido pelo usuário.
+	 */
+	public static void fatorial () {
+		
+		int numeroEscolhido = Console.recuperaInteiro("Digite um número inteiro para o cálculo ");
+		
+		int result = Exercicios.fatorial(numeroEscolhido);
+		
+		System.out.println("O fatorial do número escolhido é " + result);
+	}
+	
+	/**
+	 * Faz a execução de tela para a exibição de uma sequencia de números de acordo com a escolha do usuário.
+	 */
+	public static void sequencia1 () {
+		
+		int numeroo = Console.recuperaInteiro("Digite o número desejado ");
+		
+		Exercicios.sequencia1(numeroo);
+		
+		System.out.printf("\n\n");
 	}
 }

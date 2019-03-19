@@ -240,7 +240,7 @@ public class Exercicios {
 	}
 	
 	/**
-	 * Ex11 . Apresenta os números em sequência de acordo com o número desejado pelo usuário.
+	 * Ex07 . Apresenta os números em sequência de acordo com o número desejado pelo usuário.
 	 * @param numeroo - Número inteiro escolhido pelo usuário.
 	 */
 	public static void sequencia1 (int numeroo) {

@@ -30,7 +30,9 @@ public class Principal {
 	 */
 	public static int menu2() {
 
-		String[] opcoes = { "Cálculo do peso ideal.", "Cálculo do valor final a ser pago.", "Cálculo entre dois números.", "Cálculo de equação do segundo grau.", "Teste do tipo de triângulo" };
+		String[] opcoes = { "Cálculo do peso ideal.", "Cálculo equação do segundo grau.",
+				"Cálculo do valor final a ser pago.",  "Cálculo entre dois números.",
+				"Teste do tipo de triângulo", "Cálculo do fatorial de um número.","Exibe uma sequência de números de acordo com a escolha do usuário"};
 
 		String titulo = "Selecione a opção desejada:";
 
@@ -65,7 +67,7 @@ public class Principal {
 			testeTriangulo();
 			break;
 		case 6:
-			
+			fatorial();
 			break;
 		case 7:
 			sequencia1();
@@ -79,14 +81,14 @@ public class Principal {
 	public static void pesoIdeal() {
 		
 		//Pega as variaveis do teclado
-		String sexo = Console.recuperaTexto("Digite o sexo M para masculino e F para feminino ");
-		double h = Console.recuperaDecimal("Digite a altura em metros ");
+		String sexo = Console.recuperaTexto("Digite o sexo M para masculino e F para feminino: ");
+		double h = Console.recuperaDecimal("Digite a altura em metros: ");
 		
 		//Executa o cálculo
 		double pesoIdeal = Exercicios.pesoIdeal(sexo, h);
 		
 		//Printa na tela
-		System.out.printf("O peso ideal é %.2f \n", pesoIdeal);
+		System.out.printf("O peso ideal é %.2f kg. \n\n", pesoIdeal);
 	}
 	
 	/**
@@ -94,26 +96,26 @@ public class Principal {
 	 */
 	public static void equacao2Grau () {
 		
-		double a = Console.recuperaDecimal("Digite o valor de a ");
-		double b = Console.recuperaDecimal("Digite o valor de b ");
-		double c = Console.recuperaDecimal("Digite o valor de c ");
+		double a = Console.recuperaDecimal("Digite o valor de a: ");
+		double b = Console.recuperaDecimal("Digite o valor de b: ");
+		double c = Console.recuperaDecimal("Digite o valor de c: ");
 		
 		double[] raizes = Exercicios.calculoEquacao2Grau(a, b, c);
 		
 		if (raizes.length == 0) {
 			
-			System.out.println("Não existem raízes reais.");
+			System.out.printf("Não existem raízes reais.\n\n");
 		}
 		
 		if (raizes.length == 1) {
 			
-			System.out.println("Existe uma raiz real: " + raizes[0]);
+			System.out.printf("Existe uma raiz real: %.2f \n\n", raizes[0]);
 		}
 		
 		if (raizes.length == 2) {
 			
-			System.out.println("Raiz 1: " + raizes [0]);
-			System.out.println(" Raiz 2: " + raizes[1]);
+			System.out.printf("Raiz 1: %.2f \n\n", raizes [0]);
+			System.out.printf("Raiz 2: %.2f \n\n", raizes[1]);
 		}
 	}
 	
@@ -123,14 +125,14 @@ public class Principal {
 	public static void valorFinalPago () {
 		
 		//Pega as variaveis do teclado
-		double precoInicial = Console.recuperaDecimal("Digite o valor inicial do produto em reais ");
-		int metodoPagamento = Console.recuperaInteiro("Digite o método de pagamento 1 2 3 ou 4 ");
+		double precoInicial = Console.recuperaDecimal("Digite o valor inicial do produto em reais: ");
+		int metodoPagamento = Console.recuperaInteiro("Digite o método de pagamento 1 2 3 ou 4: ");
 		
 		//Executa o cálculo
 		double precoFinal = Exercicios.valorFinalPago(precoInicial, metodoPagamento);
 		
 		//Printa na tela
-		System.out.println("O valor final do produto é " + precoFinal);
+		System.out.printf("O valor final do produto é: %.2f \n\n", precoFinal);
 	}
 	
 	/**
@@ -138,13 +140,13 @@ public class Principal {
 	 */
 	public static void calculadora () {
 		
-		double primeiroNum = Console.recuperaDecimal("Digite o primeiro número para o cálculo ");
-		double segundoNum = Console.recuperaDecimal("Digite o segundo número para o cálculo ");
-		int operacao = Console.recuperaInteiro("Digite a operação desejada 1 a 4 ");
+		double primeiroNum = Console.recuperaDecimal("Digite o primeiro número para o cálculo: ");
+		double segundoNum = Console.recuperaDecimal("Digite o segundo número para o cálculo: ");
+		int operacao = Console.recuperaInteiro("Digite a operação desejada 1 a 4: ");
 		
 		double resposta = Exercicios.calculadora(primeiroNum, segundoNum, operacao);
 		
-		System.out.println("O resultado do cálculo é " + resposta);
+		System.out.println("O resultado do cálculo é " + resposta + "\n\n");
 	}
 	
 	public static void testeTriangulo () {
@@ -158,7 +160,7 @@ public class Principal {
 		
 		String tipo_triangulo = Exercicios.testeTriangulo(x1, y1, x2, y2, x3, y3);
 		
-		System.out.println(tipo_triangulo);
+		System.out.println(tipo_triangulo + "\n\n");
 		
 	}
 	
@@ -167,11 +169,11 @@ public class Principal {
 	 */
 	public static void fatorial () {
 		
-		int numeroEscolhido = Console.recuperaInteiro("Digite um número inteiro para o cálculo ");
+		int numeroEscolhido = Console.recuperaInteiro("Digite um número inteiro para o cálculo: ");
 		
 		int result = Exercicios.fatorial(numeroEscolhido);
 		
-		System.out.println("O fatorial do número escolhido é " + result);
+		System.out.println("O fatorial do número escolhido é " + result + "\n\n");
 	}
 	
 	/**

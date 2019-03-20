@@ -76,9 +76,11 @@ public class Exercicios {
 			
 			if (x < contador) {
 				
-				posicaoElemento[1] = x;
+				posicaoElemento[0] = x;
 				
-				posicaoElemento[2] = posicao;
+				posicaoElemento[1] = posicao;
+				
+				contador = x;
 			}
 		}
 		

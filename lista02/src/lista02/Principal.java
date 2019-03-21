@@ -1,5 +1,6 @@
 package lista02;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -19,13 +20,13 @@ public class Principal {
 	 */
 	public static void main(String[] args) {
 
-		int menu = menu2();
+		int opcao = menu();
 
-		while (menu > -1) {
+		while (opcao > -1) {
 
-			swtch(menu);
+			selecao(opcao);
 
-			menu = menu2();
+			opcao = menu();
 		}
 	}
 
@@ -34,19 +35,22 @@ public class Principal {
 	 * 
 	 * @return - Opção selecionada pelo usuário.
 	 */
-	public static int menu2() {
+	public static int menu() {
 
 		String[] opcoes = { "Mostra um vetor de inteiros populado pelo usuário.",
 				"Mostra o maior elemento de um vetor de inteiros populado pelo usuário.",
-				"Mostra o menor elemento e sua posição em um vetor de inteiro populado pelo usuário." };
+				"Mostra o menor elemento e sua posição em um vetor de inteiro populado pelo usuário.",
+				"Mostra um vetor populado pelo usuário, de forma reversa.",
+				"Mostra a multiplicação" + " de dois vetores de decimais definidos pelo usuário.",
+				"Cálcula o produto escalar de dois vetores de inteiros definidos pelo usuário." };
 
 		String titulo = "Selecione a opção desejada:";
 
 		String descricao = null;
 
-		int menu = Console.mostrarMenu(opcoes, titulo, descricao);
+		int opcao = Console.mostrarMenu(opcoes, titulo, descricao);
 
-		return menu;
+		return opcao;
 	}
 
 	/**
@@ -54,9 +58,9 @@ public class Principal {
 	 * 
 	 * @param menu - Opção selecionada pelo usuário.
 	 */
-	public static void swtch(int menu) {
+	public static void selecao(int opcao) {
 
-		switch (menu) {
+		switch (opcao) {
 		case 1:
 			mostrarVetor();
 			break;
@@ -67,13 +71,13 @@ public class Principal {
 			menorElemento();
 			break;
 		case 4:
-
+			vetorReverso();
 			break;
 		case 5:
-
+			multiplicacaoVetores();
 			break;
 		case 6:
-
+			produtoEscalar();
 			break;
 		case 7:
 
@@ -117,6 +121,47 @@ public class Principal {
 
 		System.out.println("O menor elemento é o " + posicaoElemento[0] + " e sua posição no vetor é "
 				+ (posicaoElemento[1] + 1) + ".\n\n");
+	}
+
+	/**
+	 * Faz a execução de tela para mostrar um vetor definido pelo usuário, ao
+	 * contrário.
+	 */
+	public static void vetorReverso() {
+
+		int tamanhoVetor = Console.recuperaInteiro("Quantos elementos irão conter dentro do vetor?");
+
+		List<Integer> vetorReverso = Exercicios.vetorInteiros(tamanhoVetor);
+
+		Collections.reverse(vetorReverso);
+
+		System.out.println(vetorReverso);
+	}
+
+	/**
+	 * Faz a execução de tela para mostrar a multiplicação de dois vetores de
+	 * decimais definidos pelo usuário.
+	 */
+	public static void multiplicacaoVetores() {
+
+		int tamanhoVetor = Console.recuperaInteiro("Quantos elementos irão conter dentro dos vetores?");
+
+		List<Double> vetorMultiplicado = Exercicios.multiplicacaoVetores(tamanhoVetor);
+
+		System.out.println(vetorMultiplicado + "\n");
+	}
+
+	/**
+	 * Faz a execução de tela para mostrar o cálculo do produto escalar entre dois
+	 * vetores de inteiros definidos pelo usuário.
+	 */
+	public static void produtoEscalar() {
+
+		int tamanhoVetor = Console.recuperaInteiro("Quantos elementos irão conter dentro dos vetores?");
+
+		Integer produtoEscalar = Exercicios.vetorProdutoEscalar(tamanhoVetor);
+
+		System.out.println("\n" + "O produto escalar é " + produtoEscalar + "\n\n");
 	}
 
 }

@@ -25,8 +25,26 @@ public class Exercicios {
 
 			vetorInteiros.add(Console.recuperaInteiro("Digite o valor para a posição " + (i + 1) + "."));
 		}
-		
+
 		return vetorInteiros;
+	}
+
+	/**
+	 * Método que cria um vetor de decimais populado pelo usuário.
+	 * 
+	 * @param tamanhoVetor - Tamanho do vetor escolhido pelo usuário.
+	 * @return - Vetor de decimais populado.
+	 */
+	public static List<Double> vetorDouble(int tamanhoVetor) {
+
+		List<Double> vetorDouble = new ArrayList<>();
+
+		for (int i = 0; i < tamanhoVetor; i++) {
+
+			vetorDouble.add(Console.recuperaDecimal("Digite o valor para a posição " + (i + 1) + "."));
+		}
+
+		return vetorDouble;
 	}
 
 	/**
@@ -64,6 +82,63 @@ public class Exercicios {
 		menorPosicao[1] = vetor.indexOf(Collections.min(vetor));
 
 		return menorPosicao;
+	}
+
+	/**
+	 * Ex05 . Método que multiplica dois vetores de decimais populados pelo usuário.
+	 * 
+	 * @param tamanhoVetor - Tamanho dos vetores que o usuário escolheu.
+	 * @return - Vetor multiplicado.
+	 */
+	public static List<Double> multiplicacaoVetores(int tamanhoVetor) {
+
+		List<Double> vetorMultiplicado = new ArrayList<>();
+
+		System.out.println("Digite os valores para o primeiro vetor: " + "\n");
+
+		List<Double> primeiroVetor = vetorDouble(tamanhoVetor);
+
+		System.out.println("\n" + "Digite os valores para o segundo vetor: " + "\n");
+
+		List<Double> segundoVetor = vetorDouble(tamanhoVetor);
+
+		for (int i = 0; i < tamanhoVetor; i++) {
+
+			vetorMultiplicado.add(primeiroVetor.get(i) * segundoVetor.get(i));
+		}
+
+		return vetorMultiplicado;
+	}
+
+	/**
+	 * Ex 06 . Método que calcula o produto escalar de dois vetores de inteiros
+	 * definidos pelo usuário.
+	 * 
+	 * @param tamanhoVetor - Tamanho dos vetores que o usuário escolheu.
+	 * @return - Produto escalar dos dois vetores.
+	 */
+	public static Integer vetorProdutoEscalar(int tamanhoVetor) {
+
+		List<Integer> vetorProdutoEscalar = new ArrayList<>();
+
+		Integer produtoEscalar;
+
+		System.out.println("Digite os valores para o primeiro vetor: " + "\n");
+
+		List<Integer> primeiroVetor = vetorInteiros(tamanhoVetor);
+
+		System.out.println("\n" + "Digite os valores para o segundo vetor: " + "\n");
+
+		List<Integer> segundoVetor = vetorInteiros(tamanhoVetor);
+
+		for (int i = 0; i < tamanhoVetor; i++) {
+
+			vetorProdutoEscalar.add(primeiroVetor.get(i) * segundoVetor.get(i));
+		}
+
+		produtoEscalar = vetorProdutoEscalar.stream().mapToInt(Integer::intValue).sum();
+
+		return produtoEscalar;
 	}
 
 }

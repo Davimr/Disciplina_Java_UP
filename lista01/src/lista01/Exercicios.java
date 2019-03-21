@@ -7,7 +7,7 @@ package lista01;
 public class Exercicios {
 	
 	/**
-	 * Ex01 . Função que calcula o enésimo termo da PA.
+	 * Ex01 . Método que calcula o enésimo termo da PA.
 	 * @param a1 - Primeiro termo.
 	 * @param n - Índice do enésimo termo.
 	 * @param r - razão da PA.
@@ -20,7 +20,7 @@ public class Exercicios {
 	}
 	
 	/**
-	 * Ex02 . Função para calcular a média aritmetica de três notas.
+	 * Ex02 . Método para calcular a média aritmetica de três notas.
 	 * @param nota1 - Primeira nota.
 	 * @param nota2 - Segunda nota.
 	 * @param nota3 - Terceira nota.
@@ -32,7 +32,7 @@ public class Exercicios {
 	}
 	
 	/**
-	 * Ex03 . Função para calcular a média ponderada de três notas.
+	 * Ex03 . Método para calcular a média ponderada de três notas.
 	 * @param dnota1 - Primeira nota.
 	 * @param peso1 - Peso da primeira nota.
 	 * @param dnota2 - Segunda nota.
@@ -47,7 +47,7 @@ public class Exercicios {
 	}
 	
 	/**
-	 * Ex04 . Função para converter uma temperatura em celsius para fahrenheint.
+	 * Ex04 . Método para converter uma temperatura em celsius para fahrenheint.
 	 * @param tempCelsius - Temperatura em celsius.
 	 * @return - Temperatura convertida para fahrenheint
 	 */
@@ -57,7 +57,7 @@ public class Exercicios {
 	}
 	
 	/**
-	 * Ex05 . Função para calcular o volume de um cilindro.
+	 * Ex05 . Método para calcular o volume de um cilindro.
 	 * @param raio - Raio do cilindro.
 	 * @param altura - Altura do cilindro
 	 * @return - Volume do cilindro
@@ -68,7 +68,7 @@ public class Exercicios {
 	}
 	
 	/**
-	 * Ex06 . Função para calcular o consumo de combustível em uma viagem.
+	 * Ex06 . Método para calcular o consumo de combustível em uma viagem.
 	 * @param tempo - Duração da viagem em minutos.
 	 * @param velocidadeMedia - Velocidade média durante a viagem em quilômetros por hora.
 	 * @return - Gasto total de combustível em litros.
@@ -83,7 +83,7 @@ public class Exercicios {
 	}
 	
 	/**
-	 * Ex07 . Função para calcular o valor final a ser pago por um compra com acréscimo.
+	 * Ex07 . Método para calcular o valor final a ser pago por um compra com acréscimo.
 	 * @param valorInicial - Valor inicial sem o acréscimo.
 	 * @param acrescimo - Acréscimo a ser adicionado sob o valor inicial.
 	 * @return - Valor final.

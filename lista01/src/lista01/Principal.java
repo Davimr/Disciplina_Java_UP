@@ -9,7 +9,7 @@ package lista01;
 public class Principal {
 	
 	/**
-	 * Função que da início ao programa.
+	 * Método que da início ao programa chamando o menu e utilizando a escolha gerada nele.
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -25,7 +25,7 @@ public class Principal {
 	}
 	
 	/**
-	 * Faz a execução da tela com as opções ao usuário e devolve a escolha.
+	 * Faz a execução da tela de menu com as opções ao usuário e devolve a escolha.
 	 * @return - Opção selecionada pelo usuário.
 	 */
 	public static int menu2() {
@@ -42,11 +42,10 @@ public class Principal {
 		int menu = Console.mostrarMenu(opcoes, titulo, descricao);
 		
 		return menu;
-		
 	}
 	
 	/**
-	 * Chama as funções de acordo com a seleção do usuário.
+	 * Chama os métodos de acordo com a seleção do usuário.
 	 * @param menu - Opção selecionada pelo usuário.
 	 */
 	public static void swtch(int menu) {
@@ -81,16 +80,13 @@ public class Principal {
 	 */
 	public static void calcularEnesimoTermoPA() {
 		
-		//Pega as variaveis do teclado
 		int a1 = Console.recuperaInteiro("Digite o valor de a1:");
 		int n = Console.recuperaInteiro("Digite o valor de n:");
 		int r = Console.recuperaInteiro("Digite o valor de r:");
 		
-		//Executa o calculo
 		int an = Exercicios.calcularEnesimoTermoPA(a1, n, r);
 		
-		//Printa na tela 
-		System.out.println("O resultado da an = " + an);
+		System.out.println("O resultado da an = " + an + ".\n\n");
 	}
 	
 	/**
@@ -127,7 +123,7 @@ public class Principal {
 		double mediaPonderada = Exercicios.calcularMediaPonderada(dnota1, peso1, dnota2, peso2, dnota3, peso3);
 		
 		//Printa na tela
-		System.out.printf("A média ponderada é = %.2f\n\n", mediaPonderada);
+		System.out.printf("A média ponderada é = %.2f.\n\n", mediaPonderada);
 	}
 	
 	/**
@@ -142,7 +138,7 @@ public class Principal {
 		double tempFahrenheint = Exercicios.converterCelsiusParaFahrenheint(tempCelsius);
 		
 		//Printa na tela
-		System.out.printf("A temperatura convertida para fahrenheint ficou = %.2f\n\n", tempFahrenheint);
+		System.out.printf("A temperatura convertida para fahrenheint ficou = %.2f.\n\n", tempFahrenheint);
 	}
 	
 	/**
@@ -158,7 +154,7 @@ public class Principal {
 		double volume = Exercicios.calcularVolumeCilindro(raio, altura);
 		
 		//Printa na tela
-		System.out.printf("O volume do cilindro inserido é = %.2f\n\n", volume);
+		System.out.printf("O volume do cilindro inserido é = %.2f.\n\n", volume);
 	}
 	
 	/**
@@ -174,7 +170,7 @@ public class Principal {
 		double gastoTotal = Exercicios.calcularCombustivel(tempo, velocidadeMedia);
 		
 		//Printa na tela
-		System.out.printf("O gasto total de combustivel em litros foi = %.2f\n\n", gastoTotal);
+		System.out.printf("O gasto total de combustivel em litros foi = %.2f.\n\n", gastoTotal);
 	}
 	
 	/**
@@ -190,7 +186,7 @@ public class Principal {
 		double valorFinal = Exercicios.calcularValorPago(valorInicial, acrescimo);
 		
 		//Printa na tela
-		System.out.printf("O valor final a ser pago é = %.2f\n\n", valorFinal);
+		System.out.printf("O valor final a ser pago é = %.2f.\n\n", valorFinal);
 	}
 }
 

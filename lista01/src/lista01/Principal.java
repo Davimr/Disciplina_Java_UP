@@ -17,13 +17,13 @@ public class Principal {
 	 */
 	public static void main(String[] args) {
 
-		int menu = menu2();
+		int opcao = menu();
 
-		while (menu > -1) {
+		while (opcao > -1) {
 
-			swtch(menu);
+			selecao(opcao);
 
-			menu = menu2();
+			opcao = menu();
 		}
 	}
 
@@ -32,7 +32,7 @@ public class Principal {
 	 * 
 	 * @return - Opção selecionada pelo usuário.
 	 */
-	public static int menu2() {
+	public static int menu() {
 
 		String[] opcoes = { "Cálculo do enésimo termo da PA.", "Cálculo da média Aritmetica.",
 				"Cálculo da média ponderada.", "Cálculo de conversão de celsius para fahrenheint.",
@@ -43,9 +43,9 @@ public class Principal {
 
 		String descricao = null;
 
-		int menu = Console.mostrarMenu(opcoes, titulo, descricao);
+		int opcao = Console.mostrarMenu(opcoes, titulo, descricao);
 
-		return menu;
+		return opcao;
 	}
 
 	/**
@@ -53,9 +53,9 @@ public class Principal {
 	 * 
 	 * @param menu - Opção selecionada pelo usuário.
 	 */
-	public static void swtch(int menu) {
+	public static void selecao(int opcao) {
 
-		switch (menu) {
+		switch (opcao) {
 		case 1:
 			calcularEnesimoTermoPA();
 			break;

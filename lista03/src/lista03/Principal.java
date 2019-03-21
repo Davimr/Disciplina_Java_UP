@@ -9,7 +9,7 @@ package lista03;
 public class Principal {
 
 	/**
-	 * Função que da início ao programa.
+	 * Método que da início ao programa chamando o menu e utilizando a escolha gerada nele.
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -25,7 +25,7 @@ public class Principal {
 	}
 
 	/**
-	 * Faz a execução da tela com as opções ao usuário e devolve a escolha.
+	 * Faz a execução da tela de menu com as opções ao usuário e devolve a escolha.
 	 * @return - Opção selecionada pelo usuário.
 	 */
 	public static int menu2() {
@@ -41,11 +41,10 @@ public class Principal {
 		int menu = Console.mostrarMenu(opcoes, titulo, descricao);
 
 		return menu;
-
 	}
 
 	/**
-	 * Chama as funções de acordo com a seleção do usuário.
+	 * Chama os métodos de acordo com a seleção do usuário.
 	 * @param menu - Opção selecionada pelo usuário.
 	 */
 	public static void swtch(int menu) {

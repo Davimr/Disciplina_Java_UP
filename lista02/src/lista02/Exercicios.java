@@ -1,6 +1,7 @@
 package lista02;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -10,81 +11,52 @@ import java.util.List;
 public class Exercicios {
 	
 	/**
-	 * Ex01 . Função que popula o vetor de acordo com a escolha do usuário.
-	 * @param tamanhoVet - Tamanho do vetor que o usuário predefiniu anteriormente.
-	 * @return - Vetor já populado pelo usuário.
+	 * Método que cria um vetor de inteiros populado pelo usuário.
+	 * @param tamanhoVet - Tamanho do vetor escolhido pelo usuário.
+	 * @return - Vetor de inteiros populado.
 	 */
-	public static List<Integer>mostrarVetor (int tamanhoVet) {
+	public static List<Integer>vetorInteiros (int tamanhoVetor) {
 		
-		List<Integer> vetor = new ArrayList<>();
+		List<Integer> vetorInteiros = new ArrayList<>();
 		
-		int i = 0;
-		
-		for (i = 0; i < tamanhoVet; i ++) {
+		for (int i = 0; i < tamanhoVetor; i ++) {
 			
-			int x = Console.recuperaInteiro("Digite o valor para posição " + (i+1) );
-			vetor.add(x);
+			vetorInteiros.add(Console.recuperaInteiro("Digite o valor para a posição " + (i+1) + "."));
 		}
 		
-		return vetor;
+		return vetorInteiros;
 	}
 	
 	/**
-	 * Ex02 . Função que retorna o valor do maior elemento dentro de um vetor de inteiros definido pelo usuário.
+	 * Ex02 . Método que retorna o valor do maior elemento dentro de um vetor de inteiros definido pelo usuário.
 	 * @param tamanhoVetor - Tamanho do vetor que o usuário predefiniu anteriormente.
 	 * @return - Maior elemento do vetor.
 	 */
 	public static int maiorElementoVetor (int tamanhoVetor) {
 		
-		int i = 0;
+		List<Integer> vetor = vetorInteiros(tamanhoVetor);
 		
-		int contador = 0;
+		Integer maior = Collections.max(vetor);
 		
-		for (i = 0; i < tamanhoVetor; i ++) {
-			
-			int x = Console.recuperaInteiro("Digite o valor para posição " + (i+1) );
-			
-			if (x > contador ) {
-			
-				contador = x;
-			}
-		}
-		
-		return contador;
+		return maior;
 	}
 	
 	/**
-	 * Ex03 . Função que retorna o menor elemento e sua posição em um vetor definido pelo usuário.
+	 * Ex03 . Método que retorna o menor elemento e sua posição em um vetor definido pelo usuário.
 	 * @param tamanhoVeto - Tamanho do vetor que o usuário predefiniu anteriormente.
 	 * @return - Menor elemento e sua posição no vetor.
 	 */
-	public static int[] menorElemento(int tamanhoVeto) {
+	public static int[] menorElemento(int tamanhoVetor) {
 		
-		int i = 0;
+		List<Integer> vetor = vetorInteiros(tamanhoVetor);
 		
-		int contador = 1000000;
+		int[] menorPosicao = new int [2];
 		
-		int posicao = 0;
+		menorPosicao [0] = Collections.min(vetor);
 		
-		int posicaoElemento [] = new int [2];
-		
-		for (i = 0; i < tamanhoVeto; i ++) {
-			
-			int x = Console.recuperaInteiro("Digite o valor para posição " + (i+1));
-			
-			posicao = posicao + 1;
-			
-			if (x < contador) {
+		menorPosicao [1] = vetor.indexOf(Collections.min(vetor));
 				
-				posicaoElemento[0] = x;
-				
-				posicaoElemento[1] = posicao;
-				
-				contador = x;
-			}
-		}
-		
-		return posicaoElemento;
+		return menorPosicao;
 	}
 
 }

@@ -11,7 +11,7 @@ import java.util.List;
 public class Principal {
 
 	/**
-	 * Função que da início ao programa.
+	 * Método que da início ao programa chamando o menu e utilizando a escolha gerada nele.
 	 * @param args
 	 */
 	public static void main (String[] args) {
@@ -27,7 +27,7 @@ public class Principal {
 	}
 	
 		/**
-		 * Faz a execução da tela com as opções ao usuário e devolve a escolha.
+		 * Faz a execução da tela de menu com as opções ao usuário e devolve a escolha.
 		 * @return - Opção selecionada pelo usuário.
 		 */
 		public static int menu2() {
@@ -43,11 +43,10 @@ public class Principal {
 			int menu = Console.mostrarMenu(opcoes, titulo, descricao);
 
 			return menu;
-
 		}
 
 		/**
-		 * Chama as funções de acordo com a seleção do usuário.
+		 * Chama os métodos de acordo com a seleção do usuário.
 		 * @param menu - Opção selecionada pelo usuário.
 		 */
 		public static void swtch(int menu) {
@@ -77,8 +76,6 @@ public class Principal {
 			}
 		}
 		
-		
-	
 	/**
 	 * Faz a execução de tela para mostrar um vetor de inteiros definido pelo usuário.
 	 */
@@ -86,9 +83,8 @@ public class Principal {
 		
 		int tamanhoVet = Console.recuperaInteiro("Quantos elementos irão conter dentro do vetor?");
 		
-		List<Integer> vetor = Exercicios.mostrarVetor(tamanhoVet);
+		List<Integer> vetor = Exercicios.vetorInteiros(tamanhoVet);
 		
-		//Printa na tela
 		System.out.println(vetor + "\n");
 	}
 	
@@ -97,14 +93,9 @@ public class Principal {
 	 */
 	public static void maiorElementoVetor() {
 		
-		//Pega o tamanho do vetor com o usuário
 		int tamanhoVetor = Console.recuperaInteiro("Quantos elementos irão conter dentro do vetor?");
 		
-		//Executa a função que pega o maior elemento
-		int maiorElemento = Exercicios.maiorElementoVetor(tamanhoVetor);
-		
-		//Printa na tela
-		System.out.println("O maior elemento do vetor é " + maiorElemento + "\n");
+		System.out.println(Exercicios.maiorElementoVetor(tamanhoVetor));
 	}
 	
 	/**
@@ -112,14 +103,11 @@ public class Principal {
 	 */
 	public static void menorElemento() {
 		
-		//Pega o tamanho do vetor com o usuário
-		int tamanhoVeto = Console.recuperaInteiro("Quantos elementos irão conter dentro do vetor?");
+		int tamanhoVetor = Console.recuperaInteiro("Quantos elementos irão conter dentro do vetor?");
 		
-		//Executa a função que pega o menor elemento do vetor e sua posição.
-		int posicaoElemento[] = Exercicios.menorElemento(tamanhoVeto);
+		int posicaoElemento[] = Exercicios.menorElemento(tamanhoVetor);
 		
-		//Printa na tela
-		System.out.println("O menor elemento é o " + posicaoElemento[0] + " e sua posição no vetor é " + posicaoElemento[1] + "\n\n");
+		System.out.println("O menor elemento é o " + posicaoElemento[0] + " e sua posição no vetor é " + (posicaoElemento[1]+1) + ".\n\n");
 	}
 	
 }

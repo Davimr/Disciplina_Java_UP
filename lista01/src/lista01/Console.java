@@ -3,7 +3,8 @@ package lista01;
 import java.util.Scanner;
 
 /**
- * Classe específica para realizar operações de entrada e saída de dados no console.
+ * Classe específica para realizar operações de entrada e saída de dados no
+ * console.
  * 
  * @author Andre Pimenta
  * 
@@ -41,8 +42,8 @@ public class Console {
 				return -1;
 			}
 		} catch (Exception e) {
-			opcaoEscolhida = mostrarMenu(opcoes, "Vocï¿½ selecionou um opï¿½ï¿½o invï¿½lida, por favor tente novamente.",
-					descricao);
+			opcaoEscolhida = mostrarMenu(opcoes,
+					"Vocï¿½ selecionou um opï¿½ï¿½o invï¿½lida, por favor tente novamente.", descricao);
 		}
 		return opcaoEscolhida;
 	}
@@ -50,8 +51,7 @@ public class Console {
 	/**
 	 * Mï¿½todo especï¿½fico para realizar a captura de dados decimais no console.
 	 * 
-	 * @param descricao
-	 *            textual do valor a ser informado pelo usuï¿½rio.
+	 * @param descricao textual do valor a ser informado pelo usuï¿½rio.
 	 * @return
 	 */
 	public static Double recuperaDecimal(String descricao) {
@@ -67,8 +67,7 @@ public class Console {
 	/**
 	 * Mï¿½todo especï¿½fico para realizar a captura de dados inteiros no console.
 	 * 
-	 * @param descricao
-	 *            textual do valor a ser informado pelo usuï¿½rio.
+	 * @param descricao textual do valor a ser informado pelo usuï¿½rio.
 	 * @return
 	 */
 	public static Integer recuperaInteiro(String descricao) {
@@ -86,8 +85,7 @@ public class Console {
 	 * Mï¿½todo especï¿½fico para realizar a captura de dados inteiros positivos no
 	 * console.
 	 * 
-	 * @param descricao
-	 *            textual do valor a ser informado pelo usuï¿½rio.
+	 * @param descricao textual do valor a ser informado pelo usuï¿½rio.
 	 * @return
 	 */
 	public static Integer recuperaInteiroPositivo(String descricao) {
@@ -104,8 +102,7 @@ public class Console {
 	/**
 	 * Mï¿½todo especï¿½fico para realizar a captura de dados texto no console.
 	 * 
-	 * @param descricao
-	 *            textual do valor a ser informado pelo usuï¿½rio.
+	 * @param descricao textual do valor a ser informado pelo usuï¿½rio.
 	 * @return
 	 */
 	public static String recuperaTexto(String descricao) {

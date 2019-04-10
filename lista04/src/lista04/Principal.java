@@ -33,7 +33,7 @@ public class Principal {
 	 */
 	public static int menu() {
 
-		String[] opcoes = { "Livros", "Pontos" };
+		String[] opcoes = { "Livros", "Pontos", "Pilha", "Fila" };
 
 		String titulo = "Selecione a opção desejada:";
 
@@ -58,6 +58,10 @@ public class Principal {
 		case 2:
 			executarCenario2();
 			break;
+		case 3:
+			executarCenario3();
+		case 4:
+			executarCenario4();
 		}
 	}
 	
@@ -108,6 +112,54 @@ public class Principal {
 		livro.setAno(ano);
 		
 		return livro;
+	}
+	
+	private static void executarCenario3() {
+		
+		Pilha pilha = new Pilha();
+		
+		String [] opcoes = {"Push - Inserir Livro", "Pop - Remover Livro", "Peek - Mostra o livro no topo", "Lista - Listar todos os livros" };
+		
+		boolean continua = true;
+		do {
+			int opcao = Console.mostrarMenu(opcoes, "Pilha", null);
+			switch (opcao) {
+			case 1:
+				Livro livro = criarLivro();
+				pilha.push(livro);
+				System.out.println("Livro enviado para a pilha.\n");
+				break;
+			case 2:
+				Livro removido = pilha.pop();
+				if (removido != null) {
+				System.out.println("Livro removido");
+				System.out.println(removido + "\n");
+				} else {
+					System.out.println("Não há livros na pilha!");
+				}
+				break;
+			case 3:
+				Livro leitura = pilha.peek();
+				System.out.println("Livro no topo:");
+				System.out.println(leitura + "\n");
+				break;
+			case 4:
+				System.out.println("Pilha atual:");
+				System.out.println(pilha);
+				System.out.println("******mesa*******");
+				break;
+			case -1:
+				System.out.println("Finalizando a pilha...");
+				continua = false;
+				break;
+			}
+		} while (continua);
+
+		
+	}
+	
+	private static void executarCenario4() {
+		
 	}
 
 }

@@ -60,6 +60,15 @@ public class Livro {
 		this.ano = ano;
 	}
 	
+	@Override
+		public String toString() {
+
+			return "Codigo: " + this.codigo +
+					"\nTitulo: " + this.titulo +
+					"\nAutores: "  + this.autores + "\nISBN: " + this.isbn +
+					"\nAno: " + this.ano;
+		}
+	
 	
 
 

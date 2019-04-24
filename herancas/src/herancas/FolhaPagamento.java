@@ -1,6 +1,7 @@
 package herancas;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Classe para representar uma folha de pagamentos de empregados.
@@ -11,6 +12,8 @@ import java.util.ArrayList;
 public class FolhaPagamento {
 
 	public static void imprimirFolhaEmpregados(ArrayList<Empregado> empregados) {
+		
+		Collections.sort(empregados, new ComparaPorSalario());
 		
 		for (Empregado empregado : empregados) {
 			

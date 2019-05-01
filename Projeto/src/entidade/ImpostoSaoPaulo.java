@@ -12,9 +12,10 @@ public class ImpostoSaoPaulo extends Imposto{
 		super(valor);
 	}
 	
+	static Double valorImposto = 0.18;
+	
 	public Double calcularImpostoEstadual() {
-		
-		return 0d;
+		return this.valor * valorImposto;
 	}
 	
 	

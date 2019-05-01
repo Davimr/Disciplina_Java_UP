@@ -8,23 +8,20 @@ package entidade;
  */
 public abstract class Imposto {
 	
-	private Double aliquotaFederal;
+	static private Double aliquotaFederal = 0.15;
 	
 	protected Double valor;
-
+	
 	public Imposto(Double valor) {
-		super();
 		this.valor = valor;
 	}
-	
+
 	public Double calcularImpostoTotal() {
-		
-		return 0d;
+		return this.valor + calcularImpostoEstadual() + calcularImpostoFederal();
 	}
 	
 	public Double calcularImpostoFederal() {
-		
-		return 0d;
+		return this.valor * aliquotaFederal;
 	}
 	
 	public abstract Double calcularImpostoEstadual();

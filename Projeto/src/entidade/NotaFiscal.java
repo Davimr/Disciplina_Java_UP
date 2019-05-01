@@ -24,16 +24,21 @@ public class NotaFiscal implements Comparable <NotaFiscal> {
 		this.descricao = descricao;
 		this.imposto = imposto;
 		this.valor = valor;
+		this.valorComImposto = this.imposto.calcularImpostoTotal();
 	}
 	
+	public NotaFiscal() {
+		this.dataEmissao = new Date();
+	}
+
 	@Override
 	public String toString() {
-		return super.toString();
+		return "Numero da nota: " + this.numero + "\n" + 
+	"Valor da nota : " + this.valorComImposto + "\n\n";
 	}
 	
-	public void compareTo() {
-		// TODO Auto-generated method stub
-	}
+	
+	
 	
 	public String getNumero() {
 		return numero;
@@ -79,12 +84,8 @@ public class NotaFiscal implements Comparable <NotaFiscal> {
 		return valorComImposto;
 	}
 
-	public void setValorComImposto(Double valorComImposto) {
-		this.valorComImposto = valorComImposto;
-	}
-
 	public boolean isCancelada() {
-		return cancelada;
+		return this.cancelada;
 	}
 
 	public void setCancelada(boolean cancelada) {
@@ -93,8 +94,7 @@ public class NotaFiscal implements Comparable <NotaFiscal> {
 
 	@Override
 	public int compareTo(NotaFiscal arg0) {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.valor.compareTo(arg0.getValor());
 	}
 
 }

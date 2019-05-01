@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 
 import entidade.Empresa;
+import entidade.Imposto;
+import entidade.ImpostoParana;
+import entidade.ImpostoSantaCatarina;
+import entidade.ImpostoSaoPaulo;
+import entidade.NotaFiscal;
 
 /**
  * Classe principal do programa
@@ -35,7 +40,8 @@ public class Principal {
 	 */
 	public static int menu() {
 
-		String[] opcoes = { "Cadastrar Empresa", "Consultar Empresas Cadastradas", "Excluir Empresa" };
+		String[] opcoes = { "Cadastrar Empresa", "Consultar Empresas Cadastradas", "Excluir Empresa", 
+				"Emitir nota fiscal", "Cancelar nota fiscal" };
 
 		String titulo = "\nSelecione a opção desejada:";
 
@@ -61,24 +67,42 @@ public class Principal {
 			consultarEmpresas();
 			break;
 		case 3:
+			try {
 			excluirEmpresa();
+			}
+			catch (Exception e) {
+				System.out.println(e);
+			}
+			break;
+		case 4:
+			emitirNotaFiscal();
+			break;
+		case 5:
+			cancelarNotaFiscal();
 			break;
 		}
 	}
 	
 	static ArrayList<Empresa> empresas = new ArrayList<>();
 	
+	static Empresa empresa = null;
+	
+	/**
+	 * Método para cadastrar uma empresa.
+	 */
 	public static void cadastrarEmpresa() {
 		
 		String nomeEmpresa = Console.recuperaTexto("Digite o nome da empresa: ");
 		String cnpj = Console.recuperaTexto("Digite o CNPJ da empresa: ");
 		
-		Empresa empresa = new Empresa(nomeEmpresa, cnpj);
+		empresa = new Empresa(nomeEmpresa, cnpj);
 		
 		try {
 		if (!testarSeEmpresaExiste(empresa)) {
 		
 		empresas.add(empresa);
+		
+		System.out.println("Empresa criada com sucesso!\n");
 		}
 		
 		}
@@ -87,6 +111,9 @@ public class Principal {
 		}
 	}
 	
+	/**
+	 * Método para consultar uma empresa.
+	 */
 	public static void consultarEmpresas() {
 		
 		for (Empresa empresa : empresas) {
@@ -96,19 +123,89 @@ public class Principal {
 		}
 	}
 	
-	public static void excluirEmpresa() {
+	/**
+	 * Método para excluir uma empresa.
+	 */
+	public static void excluirEmpresa() throws Exception {
 		
 		String cnpj = Console.recuperaTexto("Digite o CNPJ da empresa que deseja excluir: ");
 		
+		Empresa emp = encontrarEmpresa(empresas, cnpj);
+		
+		if (emp.getNotasFiscaisValidas().isEmpty()) {
+		
 		empresas.remove(empresas.indexOf(encontrarEmpresa(empresas, cnpj)));
+		} else {
+			throw new Exception ("Empresa não pode ser excluída pois possui notas válidas.");
+		}
 		
 	}
 	
+	/**
+	 * Método para emitar uma nota fiscal.
+	 */
 	public static void emitirNotaFiscal() {
 		
+		String cnpj = Console.recuperaTexto("Digite o CNPJ da empresa que deseja emitir a nota fiscal: ");
 		
+		String numero = Console.recuperaTexto("Digite o número da nota fiscal: ");
+		
+		String descricao = Console.recuperaTexto("Digite o motivo para a emissão da nota fiscal: ");
+		
+		Double valor =  Console.recuperaDecimal("Digite o valor da nota fiscal: ");
+		
+		Integer estado = Console.recuperaInteiro("Digite 1 para PR, 2 para SC, 3 para SP: ");
+		
+		Imposto imposto = null;
+		
+		switch (estado) {
+		
+		case 1:
+			imposto = new ImpostoParana(valor);
+			break;
+		case 2:
+			imposto = new ImpostoSantaCatarina(valor);
+			break;
+		case 3:
+			imposto = new ImpostoSaoPaulo(valor);
+			break;
+		}
+
+		NotaFiscal notaFiscal = new NotaFiscal(numero, descricao, imposto, valor);
+		
+		Empresa emp = encontrarEmpresa(empresas, cnpj);
+		
+		emp.addNota(notaFiscal);
 	}
 	
+	/**
+	 * Método para cancelar uma nota fiscal.
+	 */
+	public static void cancelarNotaFiscal () {
+		
+		String cnpj = Console.recuperaTexto("Digite o CNPJ da empresa com a nota que deseja cancelar: ");
+		
+		Empresa emp = encontrarEmpresa(empresas, cnpj);
+		
+		System.out.println(emp.getNotasFiscaisValidas());
+		
+		String numero = Console.recuperaTexto("Digite o número da nota fiscal que deseja cancelar: ");
+		
+		NotaFiscal nota = encontrarNotaFiscal(emp.getNotasFiscaisValidas(), numero);
+		
+		nota.setCancelada(true);
+	}
+	
+	public static void emitirRelatorioDeNotas () {
+
+	}
+	
+	/**
+	 * Método para testar de uma empresa existe.
+	 * @param empresa
+	 * @return
+	 * @throws Exception
+	 */
 	public static boolean testarSeEmpresaExiste(Empresa empresa) throws Exception {
 		
 		if (!empresas.contains(empresa)) {
@@ -118,6 +215,12 @@ public class Principal {
 		}
 	}
 	
+	/**
+	 * Método para encontrar uma empresa existente.
+	 * @param empresas
+	 * @param cnpj
+	 * @return
+	 */
 	public static Empresa encontrarEmpresa(ArrayList<Empresa> empresas, String cnpj) {
 		
 		for (int i = 0; i <= empresas.size() ; i++) {
@@ -127,6 +230,21 @@ public class Principal {
 				Empresa empresa = empresas.get(i);
 				
 				return empresa;
+			}
+		}
+		
+		return null;
+		}
+	
+	public static NotaFiscal encontrarNotaFiscal(ArrayList<NotaFiscal> notaFiscal, String numero) {
+		
+		for (int i = 0; i <= notaFiscal.size() ; i++) {
+			
+			if (notaFiscal.get(i).getNumero().equals(numero)) {
+				
+				NotaFiscal notaFiscall = notaFiscal.get(i);
+				
+				return notaFiscall;
 			}
 		}
 		

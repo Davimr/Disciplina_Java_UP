@@ -26,28 +26,30 @@ public class Empresa {
 		this.cnpj = cnpj;
 	}
 	
+	public ArrayList<NotaFiscal> getNotasFiscais() {
+		return this.notasFiscais;
+	}
+
 	public ArrayList<NotaFiscal> getNotasFiscaisValidas() {
 		
-		for (NotaFiscal notaFiscal : notasFiscais) {
+		for (NotaFiscal notaFiscal : this.notasFiscais) {
 			if (notaFiscal.isCancelada() == false) {
-				notasFiscaisValidas.add(notaFiscal);
-				return notasFiscaisValidas;
+				this.notasFiscaisValidas.add(notaFiscal);
 			}
 		}
 		
-		return null;
+		return this.notasFiscaisValidas;
 	}
 	
 	public ArrayList<NotaFiscal> getNotasFiscaisCanceladas() {
 		
-		for (NotaFiscal notaFiscal : notasFiscais) {
+		for (NotaFiscal notaFiscal : this.notasFiscais) {
 			if (notaFiscal.isCancelada() == true) {
-				notasFiscaisCanceladas.add(notaFiscal);
-				return notasFiscaisCanceladas;
+				this.notasFiscaisCanceladas.add(notaFiscal);
 			}
 		}
-		
-		return null;
+	
+		return this.notasFiscaisCanceladas;
 	}
 
 	public String getNome() {
@@ -65,12 +67,11 @@ public class Empresa {
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
-	
+
 	public void addNota (NotaFiscal nota) {
-		
 		this.notasFiscais.add(nota);
 	}
-	
+
 	@Override
 		public String toString() {
 			return "Nome: " + this.nome + "\nCNPJ: " + this.cnpj + "\n";

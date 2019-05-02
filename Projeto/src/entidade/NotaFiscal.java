@@ -37,9 +37,6 @@ public class NotaFiscal implements Comparable <NotaFiscal> {
 	"Valor da nota : " + this.valorComImposto + "\n\n";
 	}
 	
-	
-	
-	
 	public String getNumero() {
 		return numero;
 	}

@@ -70,7 +70,7 @@ public class NotaFiscal implements Comparable <NotaFiscal> {
 	}
 
 	public Double getValor() {
-		return valor;
+		return this.valor;
 	}
 
 	public void setValor(Double valor) {

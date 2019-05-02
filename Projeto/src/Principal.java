@@ -2,7 +2,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import entidade.Empresa;
+import entidade.Faturamento;
 import entidade.Imposto;
+import entidade.ImpostoAmapa;
 import entidade.ImpostoParana;
 import entidade.ImpostoSantaCatarina;
 import entidade.ImpostoSaoPaulo;
@@ -17,7 +19,7 @@ import entidade.NotaFiscal;
 public class Principal {
 	
 	/**
-	 * MÃ©todo que da inÃ­cio ao programa chamando o menu e utilizando a escolha
+	 * Método que da início ao programa chamando o menu e utilizando a escolha
 	 * gerada nele.
 	 * 
 	 * @param args
@@ -35,16 +37,17 @@ public class Principal {
 	}
 
 	/**
-	 * Faz a execuï¿½ï¿½o da tela de menu com as opï¿½ï¿½es ao usuï¿½rio e devolve a escolha.
+	 * Faz a execução da tela de menu com as opções ao usuário e devolve a escolha.
 	 * 
-	 * @return - Opï¿½ï¿½o selecionada pelo usuï¿½rio.
+	 * @return - Opção selecionada pelo usuário.
 	 */
 	public static int menu() {
 
 		String[] opcoes = { "Cadastrar Empresa", "Consultar Empresas Cadastradas", "Excluir Empresa", 
-				"Emitir nota fiscal", "Cancelar nota fiscal", "Emitir relatÃ³rios" };
+				"Emitir nota fiscal", "Cancelar nota fiscal", "Emitir relatÃ³rios",
+				"Calcular faturamento"};
 
-		String titulo = "\nSelecione a opï¿½ï¿½o desejada:";
+		String titulo = "\nSelecione a opção desejada:";
 
 		String descricao = null;
 
@@ -54,9 +57,9 @@ public class Principal {
 	}
 
 	/**
-	 * Chama os mï¿½todos de acordo com a seleï¿½ï¿½o do usuï¿½rio.
+	 * Chama os métodos de acordo com a seleção do usuário.
 	 * 
-	 * @param menu - Opï¿½ï¿½o selecionada pelo usuï¿½rio.
+	 * @param menu - Opção selecionada pelo usuário.
 	 */
 	public static void selecao(int opcao) {
 
@@ -79,11 +82,18 @@ public class Principal {
 			emitirNotaFiscal();
 			break;
 		case 5:
+			try {
 			cancelarNotaFiscal();
+			}
+			catch (Exception e) {
+				System.out.println(e);
+			}
 			break;
 		case 6:
 			emitirRelatorioDeNotas();
 			break;
+		case 7:
+			calcularFaturamento();
 		}
 	}
 	
@@ -92,7 +102,7 @@ public class Principal {
 	static Empresa empresa = null;
 	
 	/**
-	 * Mï¿½todo para cadastrar uma empresa.
+	 * Método para cadastrar uma empresa.
 	 */
 	public static void cadastrarEmpresa() {
 		
@@ -116,7 +126,7 @@ public class Principal {
 	}
 	
 	/**
-	 * Mï¿½todo para consultar uma empresa.
+	 * Método para consultar uma empresa.
 	 */
 	public static void consultarEmpresas() {
 		
@@ -128,7 +138,7 @@ public class Principal {
 	}
 	
 	/**
-	 * Mï¿½todo para excluir uma empresa.
+	 * Método para excluir uma empresa.
 	 */
 	public static void excluirEmpresa() throws Exception {
 		
@@ -140,25 +150,25 @@ public class Principal {
 		
 			empresas.remove(empresas.indexOf(encontrarEmpresa(empresas, cnpj)));
 		} else {
-			throw new Exception ("Empresa nï¿½o pode ser excluï¿½da pois possui notas vï¿½lidas.");
+			throw new Exception ("Empresa não pode ser excluída pois possui notas válidas.");
 		}
 		
 	}
 	
 	/**
-	 * Mï¿½todo para emitar uma nota fiscal.
+	 * Método para emitar uma nota fiscal.
 	 */
 	public static void emitirNotaFiscal() {
 		
 		String cnpj = Console.recuperaTexto("Digite o CNPJ da empresa que deseja emitir a nota fiscal: ");
 		
-		String numero = Console.recuperaTexto("Digite o nï¿½mero da nota fiscal: ");
+		String numero = Console.recuperaTexto("Digite o número da nota fiscal: ");
 		
-		String descricao = Console.recuperaTexto("Digite o motivo para a emissï¿½o da nota fiscal: ");
+		String descricao = Console.recuperaTexto("Digite o motivo para a emissão da nota fiscal: ");
 		
 		Double valor =  Console.recuperaDecimal("Digite o valor da nota fiscal: ");
 		
-		Integer estado = Console.recuperaInteiro("Digite 1 para PR, 2 para SC, 3 para SP: ");
+		Integer estado = Console.recuperaInteiro("Digite 1 para PR, 2 para SC, 3 para SP, 4 para AP: ");
 		
 		Imposto imposto = null;
 		
@@ -173,6 +183,8 @@ public class Principal {
 		case 3:
 			imposto = new ImpostoSaoPaulo(valor);
 			break;
+		case 4:
+			imposto = new ImpostoAmapa(valor);
 		}
 
 		NotaFiscal notaFiscal = new NotaFiscal(numero, descricao, imposto, valor);
@@ -185,7 +197,7 @@ public class Principal {
 	/**
 	 * Mï¿½todo para cancelar uma nota fiscal.
 	 */
-	public static void cancelarNotaFiscal () {
+	public static void cancelarNotaFiscal() throws Exception {
 		
 		String cnpj = Console.recuperaTexto("Digite o CNPJ da empresa com a nota que deseja cancelar: ");
 		
@@ -197,17 +209,21 @@ public class Principal {
 		
 		NotaFiscal nota = encontrarNotaFiscal(emp.getNotasFiscaisValidas(), numero);
 		
-		nota.setCancelada(true);
-		
-		ArrayList<NotaFiscal> notaas = new ArrayList<>();
-		
-		notaas = emp.getNotasFiscaisValidas();
-		
-		notaas.remove(nota);
-		
-		notaas.remove(nota);
-		
-		
+		if (nota.getValorComImposto() <= 10000.00d) {
+				
+			nota.setCancelada(true);
+			
+			ArrayList<NotaFiscal> notaas = new ArrayList<>();
+				
+			notaas = emp.getNotasFiscaisValidas();
+				
+			notaas.remove(nota);
+				
+			notaas.remove(nota);
+		} else {
+			throw new Exception ("Não é possivel deletar notas com valor maior de 10 mil reais.");
+		}
+
 	}
 	
 	/**
@@ -243,6 +259,20 @@ public class Principal {
 			System.out.println(notas);
 			break;
 		}
+	}
+	
+	/**
+	 * Realiza o cálculo do faturamento de todas as notas de uma empresa sem os impostos.
+	 */
+	public static void calcularFaturamento() {
+		
+		String cnpj = Console.recuperaTexto("Digite o CNPJ da empresa que deseja calcular o faturamento: ");
+		
+		Empresa emp = encontrarEmpresa(empresas, cnpj);
+		
+		Double faturamento = Faturamento.calcFaturamento(emp.getNotasFiscais());
+		
+		System.out.println(faturamento);
 	}
 	
 	/**

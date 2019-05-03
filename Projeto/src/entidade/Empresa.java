@@ -18,8 +18,6 @@ public class Empresa {
 	
 	private ArrayList<NotaFiscal> notasFiscaisCanceladas = new ArrayList<>();
 	
-	private ArrayList<NotaFiscal> notasFiscaisValidas = new ArrayList<>();
-
 	public Empresa(String nome, String cnpj) {
 		super();
 		this.nome = nome;
@@ -29,22 +27,11 @@ public class Empresa {
 	public ArrayList<NotaFiscal> getNotasFiscais() {
 		return this.notasFiscais;
 	}
-
-	public ArrayList<NotaFiscal> getNotasFiscaisValidas() {
-		
-		for (NotaFiscal notaFiscal : this.notasFiscais) {
-			if (notaFiscal.isCancelada() == false) {
-				this.notasFiscaisValidas.add(notaFiscal);
-			}
-		}
-		
-		return this.notasFiscaisValidas;
-	}
 	
 	public ArrayList<NotaFiscal> getNotasFiscaisCanceladas() {
 		
 		for (NotaFiscal notaFiscal : this.notasFiscais) {
-			if (notaFiscal.isCancelada() == true) {
+			if (notaFiscal.isCancelada()) {
 				this.notasFiscaisCanceladas.add(notaFiscal);
 			}
 		}

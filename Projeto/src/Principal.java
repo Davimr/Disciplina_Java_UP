@@ -45,7 +45,7 @@ public class Principal {
 
 		String[] opcoes = { "Cadastrar Empresa", "Consultar Empresas Cadastradas", "Excluir Empresa", 
 				"Emitir nota fiscal", "Cancelar nota fiscal", "Emitir relat√≥rios",
-				"Calcular faturamento"};
+				"Calcular faturamento", "Cancelar notas em lotes"};
 
 		String titulo = "\nSelecione a opÁ„o desejada:";
 
@@ -94,6 +94,10 @@ public class Principal {
 			break;
 		case 7:
 			calcularFaturamento();
+			break;
+		case 8:
+			cancelarNotasEmLotes();
+			break;
 		}
 	}
 	
@@ -146,7 +150,19 @@ public class Principal {
 		
 		Empresa emp = encontrarEmpresa(empresas, cnpj);
 		
-		if (emp.getNotasFiscaisValidas().isEmpty()) {
+		ArrayList<NotaFiscal> notasValidas = new ArrayList<>();
+		
+		notasValidas = emp.getNotasFiscais();
+		
+		for (NotaFiscal notaFiscal : notasValidas) {
+			
+			if (notaFiscal.isCancelada()) {
+				
+				notasValidas.remove(notaFiscal);
+			}
+		}
+		
+		if (notasValidas.isEmpty()) {
 		
 			empresas.remove(empresas.indexOf(encontrarEmpresa(empresas, cnpj)));
 		} else {
@@ -203,23 +219,25 @@ public class Principal {
 		
 		Empresa emp = encontrarEmpresa(empresas, cnpj);
 		
-		System.out.println(emp.getNotasFiscaisValidas());
+		ArrayList<NotaFiscal> notas = new ArrayList<>();
 		
-		String numero = Console.recuperaTexto("Digite o nÔøΩmero da nota fiscal que deseja cancelar: ");
+		notas = emp.getNotasFiscais();
 		
-		NotaFiscal nota = encontrarNotaFiscal(emp.getNotasFiscaisValidas(), numero);
+		for (NotaFiscal notaFiscal : notas) {
+			
+			if(!notaFiscal.isCancelada()) {
+				System.out.println(notaFiscal);
+			}
+		}
+		
+		String numero = Console.recuperaTexto("Digite o n˙mero da nota fiscal que deseja cancelar: ");
+		
+		NotaFiscal nota = encontrarNotaFiscal(emp.getNotasFiscais(), numero);
 		
 		if (nota.getValorComImposto() <= 10000.00d) {
 				
 			nota.setCancelada(true);
 			
-			ArrayList<NotaFiscal> notaas = new ArrayList<>();
-				
-			notaas = emp.getNotasFiscaisValidas();
-				
-			notaas.remove(nota);
-				
-			notaas.remove(nota);
 		} else {
 			throw new Exception ("N„o È possivel deletar notas com valor maior de 10 mil reais.");
 		}
@@ -227,7 +245,7 @@ public class Principal {
 	}
 	
 	/**
-	 * Emite os relat√≥rios de acordo com a sele√ß√£o do usu√°rio.
+	 * Emite os relatÛrios de acordo com a sele√ß√£o do usu√°rio.
 	 */
 	public static void emitirRelatorioDeNotas () {
 
@@ -243,7 +261,23 @@ public class Principal {
 		case 1:
 			cnpj = Console.recuperaTexto("Digite o CNPJ da empresa que deseja o relat√≥rio: ");
 			emp = encontrarEmpresa(empresas, cnpj);
-			System.out.println(emp.getNotasFiscais());
+			
+			ArrayList<NotaFiscal> notasValidas = new ArrayList<>();
+			
+			notasValidas = emp.getNotasFiscais();
+			
+			for (NotaFiscal notaFiscal : notasValidas) {
+				
+				if (notaFiscal.isCancelada()) {
+					
+					notasValidas.remove(notaFiscal);
+				}
+			}
+			
+			if (notasValidas.isEmpty()) {
+			System.out.println(notasValidas);	
+			}
+				
 			break;
 		case 2:
 			cnpj = Console.recuperaTexto("Digite o CNPJ da empresa que deseja o relat√≥rio: ");
@@ -273,6 +307,32 @@ public class Principal {
 		Double faturamento = Faturamento.calcFaturamento(emp.getNotasFiscais());
 		
 		System.out.println(faturamento);
+	}
+	
+	/**
+	 * Cancela notas em lotes de acordo com o valor setado pelo usu·rio.
+	 */
+	public static void cancelarNotasEmLotes() {
+		
+		String cnpj = Console.recuperaTexto("Digite o CNPJ da empresa com a nota que deseja cancelar: ");
+		
+		Empresa emp = encontrarEmpresa(empresas, cnpj);
+		
+		Double valor = Console.recuperaDecimal("Digite o valor mÌnimo para cancelamento em lotes: ");
+		
+		ArrayList<NotaFiscal> notas = new ArrayList<>();
+		
+		notas = emp.getNotasFiscais();
+		
+		for (NotaFiscal notaFiscal : notas) {
+			
+			if (notaFiscal.getValor() < valor) {
+				
+				notaFiscal.setCancelada(true);
+			}
+			
+		}
+		
 	}
 	
 	/**

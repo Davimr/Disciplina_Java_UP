@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+	
+		<meta content="text/html; charset=UTF-8" />
+	
+		<title>Cálculo PA</title>
+	
+	</h:head>
+	
+	<h:body>
+	
+		<h:form>
+		
+			<p:messages globalOnly="true" />
+		
+			<p:panel header="Cálculo PA" >
+		
+				<p:panelGrid columns="3">
+				
+						<p:outputLabel value="a1:" for="a1" />
+						<p:inputText value="#{progressaoBean.a1}" id="a1" />
+						<p:message for="a1"/>
+						
+						<p:outputLabel value="n:" for="n" />
+						<p:inputText value="#{progressaoBean.n}" id="n" />
+						<p:message for="n"/>
+						
+						<p:outputLabel value="r:" for="r" />
+						<p:inputText value="#{progressaoBean.r}" id="r" />
+						<p:message for="r"/>
+				
+				
+				</p:panelGrid>
+				
+				<f:facet name="footer">
+				
+						<p:commandButton action="#{progressaoBean.calcularComMensagem()}" value="Calcular" update="@form"/>
+				
+				</f:facet>
+		
+			</p:panel>
+		
+		</h:form>
+		
+		<a href="/lista01web/Menu.jsf">Voltar</a>
+	
+	</h:body>
+</html>

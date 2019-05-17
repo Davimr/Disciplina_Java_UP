@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+	
+		<meta content="text/html; charset=UTF-8" />
+	
+		<title>Cálculo da Distancia</title>
+	
+	</h:head>
+	
+	<h:body>
+	
+		<h:form>
+		
+			<p:messages globalOnly="true" />
+		
+			<p:panel header="Cálculo Distância entre dois pontos" >
+		
+				<p:panelGrid columns="3">
+				
+						<p:outputLabel value="x1:" for="x1" />
+						<p:inputText value="#{distanciaBean.x1}" id="x1" />
+						<p:message for="x2"/>
+						
+						<p:outputLabel value="x2:" for="x2" />
+						<p:inputText value="#{distanciaBean.x2}" id="x2" />
+						<p:message for="x2"/>
+						
+						<p:outputLabel value="y1:" for="y1" />
+						<p:inputText value="#{distanciaBean.y1}" id="y1" />
+						<p:message for="y1"/>
+						
+						<p:outputLabel value="y2:" for="y2" />
+						<p:inputText value="#{distanciaBean.y2}" id="y2" />
+						<p:message for="y2"/>
+				
+				
+				</p:panelGrid>
+				
+				<f:facet name="footer">
+				
+						<p:commandButton action="#{distanciaBean.calcularComMensagem()}" value="Calcular" update="@form"/>
+				
+				</f:facet>
+		
+			</p:panel>
+		
+		</h:form>
+		
+		<a href="/lista01web/Menu.jsf">Voltar</a>
+	
+	</h:body>
+</html>

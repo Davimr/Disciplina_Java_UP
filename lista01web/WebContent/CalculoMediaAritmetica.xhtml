@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+	
+		<meta content="text/html; charset=UTF-8" />
+	
+		<title>Cálculo Média Aritmetica</title>
+	
+	</h:head>
+	
+	<h:body>
+	
+		<h:form>
+		
+			<p:messages globalOnly="true" />
+		
+			<p:panel header="Cálculo Média Aritmetica" >
+		
+				<p:panelGrid columns="3">
+				
+						<p:outputLabel value="nota1:" for="nota1" />
+						<p:inputText value="#{mediaBean.nota1}" id="nota1" />
+						<p:message for="nota1"/>
+						
+						<p:outputLabel value="nota2:" for="nota2" />
+						<p:inputText value="#{mediaBean.nota2}" id="nota2" />
+						<p:message for="nota2"/>
+						
+						<p:outputLabel value="nota3:" for="nota3" />
+						<p:inputText value="#{mediaBean.nota3}" id="nota3" />
+						<p:message for="nota3"/>
+				
+				
+				</p:panelGrid>
+				
+				<f:facet name="footer">
+				
+						<p:commandButton action="#{mediaBean.calcularComMensagem()}" value="Calcular" update="@form"/>
+				
+				</f:facet>
+		
+			</p:panel>
+		
+		</h:form>
+		
+		<a href="/lista01web/Menu.jsf">Voltar</a>
+	
+	</h:body>
+</html>

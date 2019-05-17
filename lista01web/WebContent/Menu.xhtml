@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
 
 	<h:head>
 
@@ -13,24 +14,17 @@
 	</h:head>
  
 	<h:body> 
-
-	<h3 style="text-align: center">Menu de seleção</h3>
 	
-	<br></br>
-	<br></br>
+	<p:clock />
 	
-	<a href="/lista01web/CalculoPA.jsf">Cálculo PA</a>
+		<h3 style="text-align: center">Menu de seleção</h3>
+		
+		<p:menu>
+		    <p:menuitem value="Cálculo PA" url="/lista01web/CalculoPA.jsf" />
+		    <p:menuitem value="Cálculo Distância" url="/lista01web/CalculoDistancia.jsf" />
+		    <p:menuitem value="Cálculo Média Aritmetica" url="/lista01web/CalculoMediaAritmetica.jsf" />
 	
-	<br></br>
-	
-	<a href="/lista01web/CalculoDistancia.jsf">Cálculo distância</a>
-	
-	<br></br>
-	
-	<a href="/lista01web/CalculoMediaAritmetica.jsf">Cálculo da média Aritmetica</a>
-	
-	<br></br>
-
+		</p:menu>	
 
 	</h:body> 
 </html>

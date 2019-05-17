@@ -21,18 +21,18 @@
 		
 			<p:panel header="Cálculo PA" >
 		
-				<p:panelGrid columns="3">
+				<p:panelGrid columns="3" styleClass="ui-panelgrid-blank">
 				
 						<p:outputLabel value="a1:" for="a1" />
-						<p:inputText value="#{progressaoBean.a1}" id="a1" />
+						<p:inputText value="#{progressaoBean.calculoPA.a1}" id="a1" />
 						<p:message for="a1"/>
 						
 						<p:outputLabel value="n:" for="n" />
-						<p:inputText value="#{progressaoBean.n}" id="n" />
+						<p:inputText value="#{progressaoBean.calculoPA.n}" id="n" />
 						<p:message for="n"/>
 						
 						<p:outputLabel value="r:" for="r" />
-						<p:inputText value="#{progressaoBean.r}" id="r" />
+						<p:inputText value="#{progressaoBean.calculoPA.r}" id="r" />
 						<p:message for="r"/>
 				
 				

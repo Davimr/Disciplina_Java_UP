@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="/recursos/template/template.xhtml">
+	
+		<ui:define name="tituloPagina">Cadastro de noivos</ui:define>
+		
+		<ui:define name="conteudo">
+			<p:panelGrid columns="3" style="border: 0.5px">
+			
+				<p:outputLabel for="n1" value="Noivos*:" />
+				<p:inputText  id="n1" value="#{noivoBean.noivo.noivos}" style="width: 350px"/>
+				<p:message for="n1" />
+				
+				<p:outputLabel for="n2" value="Local do evento*:" />
+				<p:inputText id="n2" value="#{noivoBean.noivo.localEvento}" style="width: 250px" />
+				<p:message for="n2" />
+				
+				<p:outputLabel for="n3" value="Local da cerimônia*:" />
+				<p:inputText  id="n3" value="#{noivoBean.noivo.localCerimonia}" style="width: 250px"/>
+				<p:message for="n3" />
+				
+				<p:outputLabel for="n4" value="Data e hora*:" />
+				<p:calendar id="n4" value="#{noivoBean.noivo.data}" 
+						pattern="dd/MM/yyyy" mask="99/99/9999" />
+				<p:message for="n4" />
+				
+				<p:outputLabel for="n5" value="Telefone de contato*:" />
+				<p:inputText  id="n5" value="#{noivoBean.noivo.telefoneContato}"  />
+				<p:message for="n5" />
+				
+				<p:outputLabel for="n6" value="N° de convidados*:" />
+				<p:inputText  id="n6" value="#{noivoBean.noivo.numeroConvidados}" style="width: 50px" />
+				<p:message for="n6" />
+				
+				<p:outputLabel for="n7" value="Tipo de contratação*:"/>				
+				<p:selectOneMenu id="n7" value="#{noivoBean.noivo.tipoContratacao}" style="width: 235px">
+					<f:selectItem itemLabel="--Selecione--" 
+						noSelectionOption="true"/>
+					<f:selectItems itemLabel="Acessoria" />
+				</p:selectOneMenu>
+				<p:message for="n7"/>
+				
+				<p:outputLabel for="n8" value="Valor contrato*:" />
+				<p:inputText  id="n8" value="#{noivoBean.noivo.valorContrato}" style="width: 100px" />
+				<p:message for="n8" />
+				
+				<p:outputLabel for="n9" value="Valor pago*:" />
+				<p:selectOneRadio  id="n9" value="#{noivoBean.noivo.pago}">
+					<f:selectItem itemValue="Sim" itemLabel="Sim"/>
+					<f:selectItem itemValue="Não" itemLabel="Não"/>
+				</p:selectOneRadio> 
+				<p:message for="n9" />
+				
+			</p:panelGrid>
+			
+		</ui:define>
+	</ui:composition>
+</html>

@@ -18,8 +18,8 @@ public class Noivo {
 	@Id
 	@NotNull
 	@Column(name = "SCV_ENT_NOIVO_PK")
-	@SequenceGenerator(name = "NUM_SEQ_NOIVO", sequenceName = "NUM_SEQ_NOIVO", allocationSize = 0)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "NUM_SEQ_NOIVO")
+	@SequenceGenerator(name = "NUM_SEQ_NOIVO", sequenceName = "NUM_SEQ_NOIVO", allocationSize = 0)
 	private Integer id;
 	
 	@Column(name = "SCV_ENT_NOIVO_NOIVOS")

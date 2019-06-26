@@ -8,8 +8,13 @@
 	<ui:composition template="/recursos/template/template.xhtml">
 	
 		<ui:define name="tituloPagina">Cadastro de noivos</ui:define>
+		<ui:define name="botoesAcao">
+			<p:commandButton value="Cadastrar" action="#{noivoBean.salvarNoivo()}" update="@form" style="margin-right: 20px" />
+			<p:commandButton value="Listar noivos" ajax="false" action="ListaNoivos.jsf" onclick="this.form.target='_blank'" />
+		</ui:define>
 		
 		<ui:define name="conteudo">
+		
 			<p:panelGrid columns="3" style="border: 0.5px">
 			
 				<p:outputLabel for="n1" value="Noivos*:" />
@@ -39,9 +44,12 @@
 				
 				<p:outputLabel for="n7" value="Tipo de contratação*:"/>				
 				<p:selectOneMenu id="n7" value="#{noivoBean.noivo.tipoContratacao}" style="width: 235px">
-					<f:selectItem itemLabel="--Selecione--" 
+
+					<f:selectItem itemLabel="Acessoria" itemValue="Acessoria"  />
+					<f:selectItem itemLabel="Cerimonialista" itemValue="Cerimonialista" />
+					<f:selectItem itemLabel="Organizacao de eventos" itemValue="Organizacao de eventos" />
+										<f:selectItem itemLabel="--Selecione--" 
 						noSelectionOption="true"/>
-					<f:selectItems itemLabel="Acessoria" />
 				</p:selectOneMenu>
 				<p:message for="n7"/>
 				
@@ -51,8 +59,8 @@
 				
 				<p:outputLabel for="n9" value="Valor pago*:" />
 				<p:selectOneRadio  id="n9" value="#{noivoBean.noivo.pago}">
-					<f:selectItem itemValue="Sim" itemLabel="Sim"/>
-					<f:selectItem itemValue="Não" itemLabel="Não"/>
+					<f:selectItem itemValue="true" itemLabel="Sim"/>
+					<f:selectItem itemValue="false" itemLabel="Não"/>
 				</p:selectOneRadio> 
 				<p:message for="n9" />
 				

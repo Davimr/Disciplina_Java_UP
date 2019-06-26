@@ -15,6 +15,8 @@ public class NoivoBean {
 	
 	private Noivo noivo;
 	
+	private List<Noivo> noivos;
+	
 	@EJB
 	private ServicoNoivo serviconoivo;
 	
@@ -24,6 +26,7 @@ public class NoivoBean {
 	
 	public void salvarNoivo() {
 		this.serviconoivo.cadastrarNoivo(this.noivo);
+		noivo = new Noivo();
 		
 	}
 	
@@ -41,6 +44,14 @@ public class NoivoBean {
 	
 	public void setNoivo(Noivo noivo) {
 		this.noivo = noivo;
+	}
+
+	public List<Noivo> getNoivos() {
+		return noivos = serviconoivo.Listar();
+	}
+
+	public void setNoivos(List<Noivo> noivos) {
+		this.noivos = noivos;
 	}
 	
 

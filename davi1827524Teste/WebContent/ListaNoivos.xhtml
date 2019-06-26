@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="/recursos/template/template.xhtml">
+	
+		<ui:define name="tituloPagina">Lista de noivos</ui:define>
+		<ui:define name="conteudo">
+		<p:dataTable value="#{noivoBean.noivos}" var="noivosIteracao">
+			<p:column headerText="Noivos" >
+			<h:outputText value="#{noivosIteracao.noivos}" />t
+			</p:column>
+			<p:column headerText="Local Evento" >
+			<h:outputText value="#{noivosIteracao.localEvento}" />t
+			</p:column>
+			<p:column headerText="Local Cerimonia" >
+			<h:outputText value="#{noivosIteracao.localCerimonia}" />t
+			</p:column>
+			<p:column headerText="Data" >
+			<h:outputText value="#{noivosIteracao.data}" />t
+			</p:column>
+			<p:column headerText="Telefone" >
+			<h:outputText value="#{noivosIteracao.telefoneContato}" />t
+			</p:column>
+		</p:dataTable>
+		</ui:define>
+	</ui:composition>
+</html>
